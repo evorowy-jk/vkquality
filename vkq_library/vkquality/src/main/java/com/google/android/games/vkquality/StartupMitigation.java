@@ -83,6 +83,16 @@ public class StartupMitigation {
                 "", "SM6375", 34, 99, genericUnfixedDate, genericUnfixedDate);
         mStartupRecordList.add(generic6375);
 
+
+        // Custom patch for certain devices
+        StartupMitigationRecord pocox6 = new StartupMitigationRecord("POCO",
+                "", "MT6897", 30, 99, genericUnfixedDate, genericUnfixedDate);
+        mStartupRecordList.add(pocox6);
+
+        StartupMitigationRecord mt676 = new StartupMitigationRecord("samsung",
+                "", "MT6765V/CB", 30, 99, genericUnfixedDate, genericUnfixedDate);
+        mStartupRecordList.add(mt676);
+
         ArrayList<String> vulkanDevices = getVulkanDeviceStrings();
         for (String vulkanDevice : vulkanDevices)
         {
@@ -151,7 +161,12 @@ public class StartupMitigation {
                 return result;
             }
         }
-        mResultString = "Startup mitigation: Device not found in mitigation list, unaffected";
+
+        mResultString = "Startup mitigation: Device not found in mitigation list, unaffected " 
+							+ " brand: " + mBrand
+                            + " device: " + mDevice
+                            + " SoC:" + mSoC
+                            + " useVulkan: " + mUseVulkan;
         return DEVICE_UNAFFECTED;
     }
 

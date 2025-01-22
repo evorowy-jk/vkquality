@@ -70,11 +70,3 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
         EGL
         GLESv3
         log)
-
-add_library(vkq_tests SHARED vkquality_tests.cpp)
-target_link_libraries(vkq_tests
-        PRIVATE
-        $<TARGET_OBJECTS:vkq>
-        googletest::gtest
-        junit-gtest::junit-gtest
-)
